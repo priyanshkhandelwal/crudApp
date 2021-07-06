@@ -1,0 +1,12 @@
+.margin-row {
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

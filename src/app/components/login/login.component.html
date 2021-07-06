@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="card loginForm">
+        <div class="card-header text-center">Sign In</div>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+                <div class="form-row row">
+                   
+                    <div class="form-group col-12">
+                        <label>Email</label>
+                        <input type="email" class="form-control" formControlName="email">
+                        <div *ngIf="submitted && f.email.errors && f.email.errors.required" class="text-danger">Email is required</div>
+                        <div *ngIf="submitted && f.email.errors && f.email.errors.email" class="text-danger">Email must be a valid format</div>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-row row">
+                    <div class="form-group col-12">
+                        <label>Password</label>
+                        <input type="password" class="form-control" formControlName="password">
+                        <div *ngIf="submitted && f.password.errors && f.password.errors.required" class="text-danger">Password is required</div>
+                        <div *ngIf="submitted && f.password.errors && f.password.errors.minlength" class="text-danger">Password must be minimum 6 chracters long</div>
+                    </div>
+                </div>
+                <br/>
+                <div class="text-center">
+                    <button class="btn btn-primary m-2" type="submit">Login</button>
+                   
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

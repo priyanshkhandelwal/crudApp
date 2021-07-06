@@ -1,0 +1,99 @@
+<app-add-modal [products]="products"></app-add-modal>
+<div class="input-group rounded m-4">
+  <input
+    class="form-control rounded"
+    placeholder="Search"
+    aria-label="Search"
+    aria-describedby="search-addon"
+    (input)="applyFilter($event)"
+  />
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>{{ name }}</th>
+      <th>{{ category }}</th>
+      <th>{{ itemno }}</th>
+      <th>{{ price }}</th>
+      <th>{{ action }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products; let i = index">
+      <td>
+        <span class="grab" (click)="expandRow(i)" *ngIf="!product.editable">{{
+          product.name
+        }}</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="product.name"
+          *ngIf="product.editable"
+        />
+      </td>
+      <td>
+        <span *ngIf="!product.editable">{{ product.category }}</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="product.category"
+          *ngIf="product.editable"
+        />
+      </td>
+      <td>
+        <span *ngIf="!product.editable">{{ product.itemno }}</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="product.itemno"
+          *ngIf="product.editable"
+        />
+      </td>
+      <td>
+        <span *ngIf="!product.editable">{{ product.price }}</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="product.price"
+          *ngIf="product.editable"
+        />
+      </td>
+      <td>
+        <button (click)="editRow($event, i)" class="btn btn-outline-success">
+          <i
+            *ngIf="!product.editable"
+            class="fa fa-pencil"
+            aria-hidden="true"
+          ></i>
+          <span *ngIf="product.editable"> Save </span>
+        </button>
+        <button
+          *ngIf="!product.editable"
+          (click)="deleteRow($event, i)"
+          class="btn btn-outline-danger"
+        >
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+      </td>
+
+      <div *ngIf="product.expand" class="card" style="width: 12rem">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+          class="card-img-top"
+          height="130"
+          width="35"
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            <strong>{{ product.name | titlecase }}</strong>
+          </h5>
+          <p class="card-text">
+            Hi! I am currently in {{ product.class }}. This year I scored
+            {{ product.marks }}! You can reach out to me at: {{ product.phNo }}
+          </p>
+        </div>
+      </div>
+    </tr>
+  </tbody>
+</table>

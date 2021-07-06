@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Pizza Cutter",
+    "itemno": "1AD567",
+    "category": "Household",
+    "price": 250,
+    "editable": false,
+    "expand": false
+  },
+  {
+    "name": "Vegetable Peeler",
+    "itemno": "1AD568",
+    "category": "Household",
+    "price": 300,
+    "editable": false,
+    "expand": false
+  }
+]
